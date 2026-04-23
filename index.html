@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>RJ COLLECTIBLES | Luxury & Rare Items</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+      /* [คงสไตล์เดิมของคุณรักษ์ไว้ 100% ตามพิมพ์เขียว] */
+      body { background-color: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
+      header { display: flex; justify-content: space-between; align-items: center; padding: 10px 3%; border-bottom: 2px solid #d4af37; background: #111; }
+      .logo { height: 160px; }
+      .nav-btn { background: none; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-left: 10px; transition: 0.3s; }
+      .nav-btn:hover { background: rgba(212, 175, 55, 0.1); }
+      .dropdown { position: relative; display: inline-block; }
+      .dropdown-content, .panel-content { display: none; position: absolute; background: #1a1a1a; min-width: 220px; border: 1px solid #d4af37; border-radius: 10px; right: 0; z-index: 100; box-shadow: 0px 8px 16px rgba(0,0,0,0.5); }
+      .dropdown:hover .dropdown-content, .dropdown:hover .panel-content { display: block; animation: fadeIn 0.3s; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+      .dropdown-content a { color: #ccc; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #333; font-size: 14px; cursor: pointer; }
+      .dropdown-content a:hover { background: #d4af37; color: #000; }
+      #ad-banner-space { width: 94%; margin: 20px auto; height: 100px; background: #111; border: 1px dashed #d4af37; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+      .home-content-split { display: flex; justify-content: space-between; gap: 20px; width: 96%; margin: 20px auto; }
+      .new-arrival-section { flex: 1.5; background: #111; border: 1px solid #d4af37; border-radius: 10px; padding: 20px; height: 280px; overflow-y: auto; }
+      .ad-client-section { flex: 1; background: #1a1a1a; border: 1px solid #d4af37; border-radius: 10px; padding: 20px; height: 280px; display: flex; flex-direction: column; text-align: center; cursor: pointer; transition: 0.3s; }
+      .ad-client-section:hover { background: #222; }
+      #product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 40px 3%; }
+      .product-card { background: #111; border: 1px solid #d4af37; padding: 15px; border-radius: 10px; position: relative; transition: 0.3s; text-align: left;}
+      .source-tag { position: absolute; top: 5px; right: 5px; background: #d4af37; color: #000; font-size: 10px; padding: 2px 6px; border-radius: 3px; font-weight: bold; }
+      .contact-btn { background: #d4af37; color: #000; border: none; padding: 10px; border-radius: 5px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 10px; }
+      .price-stack { background: #000; padding: 8px; border-radius: 5px; margin-top: 10px; border-left: 2px solid #d4af37; }
+      .price-row { display: flex; justify-content: space-between; font-size: 12px; margin: 2px 0; font-family: monospace; }
+      .price-label { color: #d4af37; font-weight: bold; }
+
+      #google_translate_element { display: none; }
+      .goog-te-banner-frame { display: none !important; }
+      body { top: 0 !important; }
+
+      /* G-Assistant Styles */
+      #chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+      #chat-button { width: 60px; height: 60px; background: #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(212,175,55,0.4); border: none; }
+      #chat-window { width: 320px; height: 450px; background: #1a1a1a; border: 1px solid #d4af37; border-radius: 15px; position: absolute; bottom: 70px; right: 0; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+      #chat-header { background: #d4af37; color: #000; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+      #chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+      .msg { padding: 8px 12px; border-radius: 10px; max-width: 80%; }
+      .msg-g { background: #333; color: #fff; align-self: flex-start; border-bottom-left-radius: 0; border: 1px solid #444; }
+      .msg-user { background: #d4af37; color: #000; align-self: flex-end; border-bottom-right-radius: 0; }
+      #chat-input-area { padding: 10px; border-top: 1px solid #333; display: flex; gap: 5px; background: #111; }
+      #chat-input-area input { flex: 1; background: #222; border: 1px solid #444; color: #fff; padding: 8px; border-radius: 5px; outline: none; }
+      #chat-input-area button { background: #d4af37; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+      /* Ad Modal Styles */
+      #ad-modal { display:none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+      .ad-rolling-container { display: flex; width: 100%; height: 100%; animation: adFlow 15s linear infinite; }
+      .ad-rolling-container:hover { animation-play-state: paused; }
+      @keyframes adFlow { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+      .ad-rolling-container img, .ad-rolling-container video { height: 100%; object-fit: contain; cursor: pointer; flex-shrink: 0; }
+      .ad-form-field { width: 100%; background: #222; border: 1px solid #d4af37; color: #fff; padding: 8px; border-radius: 5px; margin-bottom: 10px; box-sizing: border-box; }
+      .media-lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center; }
+  </style>
+</head>
+<body>
+  <header>
+      <div style="display: flex; align-items: center;">
+            <img src="logo.png.png" alt="RJ COLLECTIBLES" style="width: 300px; height: auto;" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='block';">
+            <h1 id="text-logo" style="display:none; color:#d4af37; margin:0; font-size:24px; margin-left:10px;">RJ COLLECTIBLES</h1>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 5px;">
+          <div class="dropdown">
+              <button class="nav-btn">PRODUCT ▼</button>
+              <div class="dropdown-content">
+                  <a onclick="loadData('ALL')">✨ ALL PRODUCTS</a>
+                  <a onclick="loadData('MUSIC')">MUSIC</a>
+                  <a onclick="loadData('FISHING')">FISHING</a>
+                  <a onclick="loadData('LUXURY')">LUXURY</a>
+                  <a onclick="loadData('EV PARTS')">EV PARTS</a>
+                  <a onclick="loadData('COLLECTION')">COLLECTION</a>
+              </div>
+          </div>
+
+          <div class="dropdown">
+              <button class="nav-btn" onclick="showAdInfo()"><i class="fa-solid fa-rectangle-ad"></i> ADVERTISE ▼</button>
+              <div class="dropdown-content">
+                  <a onclick="showAdInfo()">📈 ดูเรทราคาโฆษณา</a>
+                  <a onclick="sendAdEmail()">📧 ส่งข้อมูลทาง Email</a>
+              </div>
+          </div>
+
+          <div class="dropdown">
+              <button class="nav-btn"><i class="fa-solid fa-user-shield"></i> ADMIN ▼</button>
+              <div class="panel-content">
+                  <h4 style="color: #d4af37; margin:0; padding:10px;">📊 CONTROL PANEL</h4>
+                  <button class="nav-btn" style="width:90%; margin:5px 5%;" onclick="fetchRates()">Sync Data</button>
+              </div>
+          </div>
+
+          <div class="dropdown">
+              <button class="nav-btn"><i class="fa-solid fa-microchip"></i> SYSTEM ▼</button>
+              <div class="panel-content" style="padding:10px;">
+                  <h4 style="color: #d4af37; margin:0;">⚙️ System Status</h4>
+                  <p style="font-size: 12px; margin-top: 10px;">Network: <span style="color:#0f0">Connected</span></p>
+                  <p style="font-size: 12px;">Market Rate: <span id="rate-status" style="color:#0f0">Live</span></p>
+              </div>
+          </div>
+
+          <div class="dropdown">
+              <button class="nav-btn" onclick="toggleChat()"><i class="fa-solid fa-headset"></i> ASSISTANT ▼</button>
+              <div class="dropdown-content">
+                  <a onclick="toggleChat()">💬 คุยกับ G-Assistant</a>
+                  <a href="mailto:raksak.rj@gmail.com">📧 ส่งคำขอรับความช่วยเหลือ</a>
+              </div>
+          </div>
+
+          <div class="dropdown">
+              <button class="nav-btn" id="lang-btn"><i class="fa-solid fa-language"></i> TRANSLATE ▼</button>
+              <div class="dropdown-content">
+                  <a onclick="doTranslate('th')">🇹🇭ภาษาไทย (THB)</a>
+                  <a onclick="doTranslate('en')">🇺🇸 English (USD)</a>
+                  <a onclick="doTranslate('ja')">🇯🇵日本語 (JPY)</a>
+                  <a onclick="doTranslate('zh-CN')">🇨🇳 Chinese (CNY)</a>
+                  <a onclick="doTranslate('ko')">🇰🇷 Korean (KRW)</a>
+                  <a onclick="doTranslate('fr')">🇫🇷 French (EUR)</a>
+              </div>
+          </div>
+          <div id="google_translate_element"></div>
+      </div>
+  </header>
+
+  <div id="ad-banner-space">
+      <div class="ad-rolling-container">
+          <img src="https://via.placeholder.com/400x100/111/d4af37?text=AD+IMAGE+1" onclick="popMedia(this.src, 'img')">
+          <img src="https://via.placeholder.com/400x100/111/d4af37?text=AD+IMAGE+2" onclick="popMedia(this.src, 'img')">
+          <video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay muted loop onclick="popMedia(this.src, 'video')"></video>
+      </div>
+  </div>
+
+  <div class="home-content-split">
+      <div class="new-arrival-section">
+          <h3 style="color: #d4af37; border-bottom: 1px solid #333; padding-bottom: 10px;">🔥 SYSTEM STATUS</h3>
+          <div id="update-text" style="color: #0f0; font-size: 13px;">✅ API Syncing... All Systems Ready.</div>
+      </div>
+      <div class="ad-client-section" onclick="showAdInfo()">
+          <h4 style="color: #d4af37; margin-top: 0;">ADVERTISING</h4>
+          <p style="color: #d4af37; font-size: 14px; margin-top: 20px;">Partner Space Available</p>
+          <p style="color: #777; font-size: 12px;">คลิกเพื่อร่วมเป็นส่วนหนึ่งกับเรา</p>
+      </div>
+  </div>
+
+  <div id="product-grid"></div>
+
+  <div id="ad-modal">
+    <div style="background:#111; padding: 35px; border-radius: 20px; border: 1px solid #d4af37; max-width: 650px; width: 95%; text-align: center; box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); max-height: 90vh; overflow-y: auto;">
+        <h2 style="color:#d4af37; margin-bottom: 5px; letter-spacing: 2px;">ADVERTISING RATE CARD</h2>
+        <p style="color:#aaa; font-size: 0.85rem; margin-bottom: 25px;">รายละเอียดพื้นที่โฆษณา RJ COLLECTIBLES</p>
+        
+        <div style="overflow-x: auto; margin-bottom: 25px; border: 1px solid #333; border-radius: 10px;">
+            <table style="width: 100%; border-collapse: collapse; color: #eee; font-size: 0.8rem; text-align: center;">
+                <tr style="background: #1a1a1a; color: #d4af37; border-bottom: 2px solid #d4af37;">
+                    <th style="padding: 12px; text-align: left;">ตำแหน่ง / ระยะเวลา</th>
+                    <th style="padding: 10px;">1 เดือน</th>
+                    <th style="padding: 10px;">3 เดือน</th>
+                    <th style="padding: 10px;">6 เดือน</th>
+                    <th style="padding: 10px;">1 ปี (🔥)</th>
+                </tr>
+                <tr style="border-bottom: 1px solid #222;">
+                    <td style="padding: 12px; text-align: left;">🏆 <b>Main Banner</b></td>
+                    <td style="padding: 10px;">3,500.-</td>
+                    <td style="padding: 10px;">9,500.-</td>
+                    <td style="padding: 10px;">18,000.-</td>
+                    <td style="padding: 10px; color: #0f0;">32,000.-</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #222;">
+                    <td style="padding: 12px; text-align: left;">⭐ <b>Side Slot</b></td>
+                    <td style="padding: 10px;">2,500.-</td>
+                    <td style="padding: 10px;">6,800.-</td>
+                    <td style="padding: 10px;">12,500.-</td>
+                    <td style="padding: 10px; color: #0f0;">22,000.-</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px; text-align: left;">🤖 <b>G-Assistant Connect</b></td>
+                    <td style="padding: 10px;">1,500.-</td>
+                    <td style="padding: 10px;">4,000.-</td>
+                    <td style="padding: 10px;">7,500.-</td>
+                    <td style="padding: 10px; color: #0f0;">13,000.-</td>
+                </tr>
+            </table>
+        </div>
+         <div style="text-align: left; border-top: 1px solid #333; padding-top: 20px;">
+            <h4 style="color: #d4af37;"><i class="fa-solid fa-paper-plane"></i> SUBMIT ADVERTISING DATA</h4>
+            <label style="font-size: 11px; color: #d4af37;">เลือกระยะเวลา (ข้อ 3):</label>
+            <select id="ad-period" class="ad-form-field">
+                <option value="1 Month">1 เดือน</option>
+                <option value="3 Months">3 เดือน</option>
+                <option value="6 Months">6 เดือน</option>
+                <option value="12 Months">12 เดือน</option>
+            </select>
+            <label style="font-size: 11px; color: #d4af37;">แนบไฟล์ภาพ/วิดีโอ (ข้อ 1-2):</label>
+            <input type="file" class="ad-form-field" multiple>
+            <label style="font-size: 11px; color: #d4af37;">หลักฐานการโอนเงิน (ข้อ 4):</label>
+            <input type="file" id="ad-pay-slip" class="ad-form-field">
+            <button class="contact-btn" onclick="sendAdEmail()">SUBMIT TO raksak.rj@gmail.com</button>
+            <div style="text-align: left; background: #1a1a1a; padding: 20px; border-radius: 12px; border: 1px solid #333; margin-top: 25px;">
+            
+            <div style="margin-bottom: 20px;">
+                <label style="color: #d4af37; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px;">
+                    <i class="fa-solid fa-camera"></i> 3. แนบไฟล์ภาพนิ่งโฆษณา (สูงสุด 3 ภาพ):
+                </label>
+                <p style="color: #aaa; font-size: 11px; margin: 0 0 10px 0;">(เฉพาะไฟล์ .png หรือ .jpg เท่านั้น)</p>
+                <div style="display: block;">
+    <input type="file" accept="image/png, image/jpeg" style="background: #000; color: #fff; padding: 10px; border: 1px solid #333; border-radius: 5px; width: 100%; font-size: 11px; margin-bottom: 5px; box-sizing: border-box;">
+    <input type="file" accept="image/png, image/jpeg" style="background: #000; color: #fff; padding: 10px; border: 1px solid #333; border-radius: 5px; width: 100%; font-size: 11px; margin-bottom: 5px; box-sizing: border-box;">
+    <input type="file" accept="image/*" style="background: #000; color: #fff; padding: 10px; border: 1px solid #333; border-radius: 5px; width: 100%; font-size: 11px; margin-bottom: 5px; box-sizing: border-box;">
+</div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="color: #d4af37; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px;">
+                    <i class="fa-solid fa-pen-to-square"></i> 4. ใส่ข้อความโปรโมต (ไม่เกิน 60 ตัวอักษร):
+                </label>
+                <textarea 
+                    id="ad-text" 
+                    maxlength="60" 
+                    placeholder="พิมพ์ข้อความโปรโมตสั้นๆ ตรงนี้..."
+                    style="width: 100%; height: 60px; background: #000; color: #fff; padding: 10px; border: 1px solid #333; border-radius: 5px; outline: none; resize: none; box-sizing: border-box; font-size: 13px;"></textarea>
+                <div style="text-align: right; font-size: 11px; color: #777; margin-top: 5px;">
+                    <span id="char-count">0</span> / 60 ตัวอักษร
+                </div>
+                <div style="text-align: left; margin-top: 15px; margin-bottom: 20px;">
+    <button type="button" onclick="askGAboutAd()" style="background: #1a1a1a; color: #d4af37; border: 1px solid #d4af37; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); transition: 0.3s;">
+        <i class="fa-solid fa-robot"></i> ให้ G (Aldin) ช่วยตรวจสอบข้อความนี้
+    </button>
+</div>
+            </div>
+
+        <div style="text-align: left; border-top: 1px solid #333; padding-top: 20px;">
+            <label style="font-size: 11px; color: #d4af37;">เลือกระยะเวลา:</label>
+            <select id="ad-period" class="ad-form-field">
+                <option value="1 Month">1 เดือน</option>
+                <option value="3 Months">3 เดือน</option>
+                <option value="6 Months">6 เดือน</option>
+                <option value="12 Months">12 เดือน</option>
+            </select>
+            <button class="contact-btn" onclick="sendAdEmail()">SUBMIT ADVERTISING DATA</button>
+        </div>
+        <button onclick="closeAdInfo()" style="background: transparent; border: none; color: #777; cursor: pointer; text-decoration: underline; margin-top: 20px;">ปิดหน้าต่างนี้</button>
+    </div>
+  </div>
+
+  <div id="media-pop" class="media-lightbox" onclick="this.style.display='none'">
+      <div id="pop-box" style="max-width: 90%; max-height: 90%;"></div>
+  </div>
+
+  <div id="chat-widget">
+      <div id="chat-window">
+          <div id="chat-header">
+              <span>💬 G-Assistant @RJ</span>
+              <span style="cursor:pointer" onclick="toggleChat()">✖</span>
+          </div>
+          <div id="chat-body">
+              <div class="msg msg-g">สวัสดีครับ! ยินดีให้ข้อมูลพื้นที่โฆษณาและบริการต่างๆ ครับ</div>
+          </div>
+          <div id="chat-input-area">
+              <input type="text" id="user-input" placeholder="พิมพ์ข้อความ...">
+              <button onclick="sendMessage()">ส่ง</button>
+          </div>
+      </div>
+      <button id="chat-button" onclick="toggleChat()">
+          <i class="fa-solid fa-comment-dots" style="color: #000; font-size: 24px;"></i>
+      </button>
+  </div>
+
+  <script type="text/javascript">
+      let currentRates = { "THB": 0.24, "USD": 0.0065 }; 
+      
+      async function fetchRates() {
+          try {
+              const res = await fetch('https://open.er-api.com/v6/latest/JPY');
+              const data = await res.json();
+              currentRates = data.rates;
+              loadData('ALL');
+          } catch (e) { loadData('ALL'); }
+      }
+
+      function toggleChat() {
+          const win = document.getElementById('chat-window');
+          win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+      }
+
+      function sendMessage() {
+          const input = document.getElementById('user-input');
+          const body = document.getElementById('chat-body');
+          if(input.value.trim() === "") return;
+          body.innerHTML += `<div class="msg msg-user">${input.value}</div>`;
+          setTimeout(() => {
+              body.innerHTML += `<div class="msg msg-g">รับทราบครับ เจ้าหน้าที่จะรีบติดต่อกลับครับ</div>`;
+              body.scrollTop = body.scrollHeight;
+          }, 800);
+          input.value = "";
+          body.scrollTop = body.scrollHeight;
+      }
+
+      function popMedia(src, type) {
+          const m = document.getElementById('media-pop');
+          const b = document.getElementById('pop-box');
+          m.style.display = 'flex';
+          b.innerHTML = type === 'img' ? `<img src="${src}" style="width:100%; border:2px solid #d4af37;">` : `<video src="${src}" controls autoplay style="width:100%; border:2px solid #d4af37;"></video>`;
+      }
+
+      function sendAdEmail() {
+          const p = document.getElementById('ad-period').value;
+          const mail = `mailto:raksak.rj@gmail.com?subject=Ad_Submission_${p}&body=ต้องการลงโฆษณา ${p}`;
+          window.location.href = mail;
+      }
+
+      function doTranslate(lang) {
+          var select = document.querySelector('select.goog-te-combo');
+          if (select) { select.value = lang; select.dispatchEvent(new Event('change')); }
+      }
+
+      function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage:'th', includedLanguages:'th,en,ja,zh-CN,ko,fr'}, 'google_translate_element');
+      }
+
+      function showAdInfo() { document.getElementById('ad-modal').style.display = 'flex'; }
+      function closeAdInfo() { document.getElementById('ad-modal').style.display = 'none'; }
+      
+      async function loadData(categoryFilter = 'ALL') {
+          const grid = document.getElementById('product-grid');
+          const products = [
+              { "name": "Fender Guitar Special", "priceJPY": 2000000, "img": "https://images.unsplash.com/photo-1550291652-6ea9114a47b1?q=80&w=400", "source": "STOCK", "category": "MUSIC" },
+              { "name": "Shimano Fishing Reel", "priceJPY": 120000, "img": "https://images.unsplash.com/photo-1611091807613-268e3d8f378a?q=80&w=400", "source": "PREMIUM", "category": "FISHING" },
+              { "name": "หน้าหนวด 171", "priceJPY": 75000, "img": "https://images.unsplash.com/photo-1512446817577-47c4a4fb6c05?q=80&w=400", "source": "COLLECTION", "category": "COLLECTION" }
+          ];
+          grid.innerHTML = "";
+          const filtered = categoryFilter === 'ALL' ? products : products.filter(p => p.category === categoryFilter);
+          filtered.forEach(item => {
+              let thb = (item.priceJPY * currentRates.THB).toLocaleString(undefined, {maximumFractionDigits: 0});
+              let usd = (item.priceJPY * currentRates.USD).toLocaleString(undefined, {maximumFractionDigits: 2});
+              let jpy = item.priceJPY.toLocaleString();
+              grid.innerHTML += `
+                  <div class="product-card">
+                      <span class="source-tag">${item.source}</span>
+                      <img src="${item.img}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
+                      <h4 style="color: #d4af37; margin: 10px 0;">${item.name}</h4>
+                      <div class="price-stack">
+                          <div class="price-row"><span class="price-label">THB</span> ฿ ${thb}</div>
+                          <div class="price-row"><span class="price-label">JPY</span> ¥ ${jpy}</div>
+                          <div class="price-row"><span class="price-label">USD</span> $ ${usd}</div>
+                      </div>
+                      <button class="contact-btn" onclick="toggleChat()">CONTACT G</button>
+                  </div>`;
+          });
+      }
+      window.onload = fetchRates;
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
